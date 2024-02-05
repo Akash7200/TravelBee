@@ -3,17 +3,19 @@ import "./featured.css"
 
 const Featured = () => {
 
-    const { data, loading, error } = useFetch("/hotels/countByCity?cities=berlin,madrid,london");
-    console.log(data);
+    const { data, loading, error} = useFetch("http://localhost:8000/api/hotels/countByCity?cities=berlin,madrid,london");
 
     return (
         <div className="featured">
-            <div className="featuredItem">
+            {loading ? (
+                "Loading please wait..."
+                ) :  
+            <><div className="featuredItem">
                 <img width="300px" height="250px" src="./images/1.jpg" alt="" className="featuredImg" />
 
                 <div className="featuredTitles">
-                    <h1>Dhaka</h1>
-                    <h2>123 properties</h2>
+                    <h1>Berlin</h1>
+                    <h2>{data[0]} properties</h2>
                 </div>
             </div>
 
@@ -21,8 +23,8 @@ const Featured = () => {
                 <img width="300px" height="250px" src="./images/2.jpg" alt="" className="featuredImg" />
 
                 <div className="featuredTitles">
-                    <h1>New York</h1>
-                    <h2>504 properties</h2>
+                    <h1>Madrid</h1>
+                    <h2>{data[1]} properties</h2>
                 </div>
             </div>
 
@@ -31,11 +33,10 @@ const Featured = () => {
 
                 <img width="300px" height="250px" src="./images/3.jpg" alt="" className="featuredImg" />
                 <div className="featuredTitles">
-                    <h1>Dubai</h1>
-                    <h2>468 properties</h2>
+                    <h1>London</h1>
+                    <h2>{data[2]} properties</h2>
                 </div>
-            </div>
-
+            </div></>}
         </div>
     )
 }

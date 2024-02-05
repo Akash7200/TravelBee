@@ -1,47 +1,34 @@
+import useFetch from "../../hooks/useFetch";
 import "./propertyList.css"
 
 const PropertyList = () => {
+
+  const { data, loading, error} = useFetch("http://localhost:8000/api/hotels/countByType");
+
+  const images= [
+    "./images/4.jpg",
+    "./images/5.jpg",
+    "./images/6.jpg",
+    "./images/7.jpg",
+    "./images/8.jpg"
+  ]
+
   return (
     <div className="pList">
-      <div className="pListItem">
-        <img width="300px" height="250px" src="./images/4.jpg" alt="" className="pListImg" />
+      {loading ? (
+        "Loading please wait..."
+        ) :
+        (<>
+        
+        {data && images.map((img,i) => (<div className="pListItem" key = {i}>
+        <img width="300px" height="250px" src={img} alt="" className="pListImg" />
         <div className="pListTitles">
-            <h1>Hotels</h1>
-            <h2>6544 hotels</h2>
+            <h1>{data[i]?.type}</h1>
+            <h2>{data[i]?.count} {data[i]?.type}</h2>
         </div>
-      </div>
+      </div>))}
 
-      <div className="pListItem">
-        <img width="300px" height="250px" src="./images/5.jpg" alt="" className="pListImg" />
-        <div className="pListTitles">
-            <h1>Apartments</h1>
-            <h2>674 apartments</h2>
-        </div>
-      </div>
-
-      <div className="pListItem">
-        <img width="300px" height="250px" src="./images/6.jpg" alt="" className="pListImg" />
-        <div className="pListTitles">
-            <h1>Cottages</h1>
-            <h2>544 cottages</h2>
-        </div>
-      </div>
-
-      <div className="pListItem">
-        <img width="300px" height="250px" src="./images/7.jpg" alt="" className="pListImg" />
-        <div className="pListTitles">
-            <h1>Resorts</h1>
-            <h2>65 resorts</h2>
-        </div>
-      </div>
-
-      <div className="pListItem">
-        <img width="300px" height="250px" src="./images/8.jpg" alt="" className="pListImg" />
-        <div className="pListTitles">
-            <h1>Motels</h1>
-            <h2>687 motels</h2>
-        </div>
-      </div>
+      </>)}
 
     </div>
   )
