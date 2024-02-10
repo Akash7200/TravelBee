@@ -6,11 +6,11 @@ const PropertyList = () => {
   const { data, loading, error} = useFetch("http://localhost:8000/api/hotels/countByType");
 
   const images= [
-    "./images/4.jpg",
-    "./images/5.jpg",
-    "./images/6.jpg",
-    "./images/7.jpg",
-    "./images/8.jpg"
+    "https://cf.bstatic.com/xdata/images/hotel/max1280x900/379757616.jpg?k=82d1fe93dda214b7f4c77d9d3eb69e3468f5fed19f5c04c8a70ad93a2fdcad64&o=&hp=1",
+    "https://cf.bstatic.com/xdata/images/hotel/max1280x900/379757616.jpg?k=82d1fe93dda214b7f4c77d9d3eb69e3468f5fed19f5c04c8a70ad93a2fdcad64&o=&hp=1",
+    "https://cf.bstatic.com/xdata/images/hotel/max1280x900/379757616.jpg?k=82d1fe93dda214b7f4c77d9d3eb69e3468f5fed19f5c04c8a70ad93a2fdcad64&o=&hp=1",
+    "https://cf.bstatic.com/xdata/images/hotel/max1280x900/379757616.jpg?k=82d1fe93dda214b7f4c77d9d3eb69e3468f5fed19f5c04c8a70ad93a2fdcad64&o=&hp=1",
+    "https://cf.bstatic.com/xdata/images/hotel/max1280x900/379757616.jpg?k=82d1fe93dda214b7f4c77d9d3eb69e3468f5fed19f5c04c8a70ad93a2fdcad64&o=&hp=1"
   ]
 
   return (
