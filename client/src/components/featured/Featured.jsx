@@ -12,7 +12,7 @@ const Featured = () => {
                 "Loading please wait..."
                 ) :  
             <><div className="featuredItem">
-                <img width="300px" height="250px" src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/215955381.jpg?k=ff739d1d9e0c8e233f78ee3ced82743ef0355e925df8db7135d83b55a00ca07a&o=&hp=1" alt="" className="featuredImg" />
+                <img width="300px" height="250px" src="https://a.cdn-hotels.com/gdcs/production47/d644/0f1f2695-8549-4f5f-bdf1-9deab5ffaba5.jpg?impolicy=fcrop&w=1600&h=1066&q=medium" alt="" className="featuredImg" />
 
                 <div className="featuredTitles">
                     <h1>Berlin</h1>
@@ -21,7 +21,7 @@ const Featured = () => {
             </div>
 
             <div className="featuredItem">
-                <img width="300px" height="250px" src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/215955381.jpg?k=ff739d1d9e0c8e233f78ee3ced82743ef0355e925df8db7135d83b55a00ca07a&o=&hp=1" alt="" className="featuredImg" />
+                <img width="300px" height="250px" src="https://mldvwwasb8tu.i.optimole.com/cb:esbD~6200b/w:948/h:632/q:90/ig:avif/f:best/https://travelaway.me/wp-content/uploads/2012/04/Madrid-cityscape.jpg" alt="" className="featuredImg" />
 
                 <div className="featuredTitles">
                     <h1>Madrid</h1>

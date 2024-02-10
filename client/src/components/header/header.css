@@ -1,5 +1,5 @@
 .header {
-  background-color: #003580;
+  background-color: brown;
   color: white;
   display: flex;
   justify-content: center;
@@ -32,6 +32,7 @@
   border: 1px solid white;
   padding: 10px;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .headerDesc {
@@ -39,7 +40,8 @@
 }
 
 .headerBtn {
-  background-color: #0071c2;
+  border-radius: 5px;
+  background-color:maroon;
   color: white;
   font-weight: 500;
   border: none;
