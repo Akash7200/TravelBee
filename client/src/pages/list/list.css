@@ -69,8 +69,9 @@
 }
 
 .listSearch>button{
+  border-radius: 10px;
   padding: 10px;
-  background-color: #0071c2;
+  background-color: maroon;
   color: white;
   border: none;
   width: 100%;
