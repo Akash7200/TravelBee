@@ -8,6 +8,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { useState } from "react";
 import { format } from "date-fns"
 import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 
 
@@ -91,7 +92,7 @@ const Header = ({ type }) => {
 
 
         {type !== "list" &&
-          <>   <h1 className="headerTitle">Refresh once again</h1>
+          <>   <h1 className="headerTitle">Welocome to TravelBee. One solution to all your travel needs</h1>
             <p className="headerDesc">Enjoy your travel. We are here to serve you the best tour experience</p>
             <button className="headerBtn">Sign in / Register</button>
             <div className="headerSearch">
@@ -103,14 +104,6 @@ const Header = ({ type }) => {
                 onChange={e=>setDestination(e.target.value)}
                 />
               </div>
-
-
-
-
-
-
-
-
 
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
@@ -125,17 +118,7 @@ const Header = ({ type }) => {
                 />
                 }
 
-
-
-
               </div>
-
-
-
-
-
-
-
 
 
               <div className="headerSearchItem">
