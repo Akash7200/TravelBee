@@ -1,15 +1,20 @@
 import { useContext } from "react";
 import "./navbar.css"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
+
+  const navigate = useNavigate()
 
   const { user } = useContext(AuthContext);
 
   const { logout } = useContext(AuthContext);
 
   const handleLogout = () => {
+    localStorage.setItem("user", "")
+    navigate("/")
+    window.location.reload()
     logout(); // Call the logout function from AuthContext to clear the session
   };
 

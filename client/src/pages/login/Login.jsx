@@ -38,7 +38,7 @@ const Login = () => {
     return (
         <div className="login">
             <div className="lContainer">
-                <h2>TravelBee</h2>
+                <h2>TravelBee User Login</h2>
                 <input type="text" placeholder="username" id="username" onChange={handleChange} className="lInput" />
                 <input type="password" placeholder="password" id="password" onChange={handleChange} className="lInput" />
                 <button disabled={loading} onClick={handleClick} className="lButton">Login</button>
