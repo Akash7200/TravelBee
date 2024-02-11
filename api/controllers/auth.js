@@ -38,3 +38,7 @@ export const login = async (req, res, next)=>{
     
     }
 }
+
+export const logout = (req, res)=>{
+    res.clearCookie("access_token").send("logged out")
+}
