@@ -16,7 +16,7 @@ const Reserve = ({ setOpen, hotelId, userData, hotelData }) => {
     const { data, loading, error } = useFetch(`http://localhost:8000/api/hotels/room/${hotelId}`)
     const { dates } = useContext(SearchContext)
     //
-    const [roomId, setRoomId] = useState(null);
+    const [roomId, setRoomId] = useState(null);         
 
     console.log(data)
 
@@ -75,7 +75,8 @@ const Reserve = ({ setOpen, hotelId, userData, hotelData }) => {
                     userData: userData,
                     hotelData: hotelData,
                     hotelId: hotelId,
-                    roomId: selectedRoomIds
+                    roomId: selectedRooms,
+                    suiteId: roomId
                 }
             });
 
