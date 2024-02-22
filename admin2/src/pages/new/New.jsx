@@ -23,7 +23,12 @@ const New = ({ inputs, title }) => {
       const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/daq9b0bqv/image/upload", data)
 
 
-      const {url} = uploadRes.data
+      if (uploadRes.data) {
+        const { url } = uploadRes.data;
+      } else {
+        const { url } = "";
+      }
+      const {url} = uploadRes.data 
 
       const newUser = {
         ...info,
@@ -46,7 +51,7 @@ const New = ({ inputs, title }) => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>{title}</h1>
+          <h1>Add New Admin/User</h1>
         </div>
         <div className="bottom">
           <div className="left">

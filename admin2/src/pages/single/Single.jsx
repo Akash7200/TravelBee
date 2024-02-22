@@ -7,19 +7,27 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 
-
-
 const Single = () => {
-
-
 
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const id = location.pathname.split("/")[2];
   const { data, loading, error } = useFetch(`/${path}`);
 
-  
 
+
+
+  // // Filter the array to find the data with the same id
+  // const selectedData = data.find(item => item.id === id);
+  // console.log(selectedData);
+
+  // if (selectedData) {
+  //   // Access the properties of selectedData here
+  //   console.log(selectedData.id);
+  //   console.log(selectedData.name);
+  //   console.log(selectedData.email);
+  //   // ...
+  // }
 
   const username = data && data.length > 4 ? data[3].username : '';
   const email = data && data.length > 4 ? data[3].email : '';
@@ -27,11 +35,13 @@ const Single = () => {
   const city = data && data.length > 4 ? data[3].city : '';
   const country = data && data.length > 4 ? data[3].country : '';
 
-  console.log(data)
 
-
+  // useEffect(() => {
+  //   setList(data);
+  // }, [data]);
 
   return (
+    
     <div className="single">
       <Sidebar />
       <div className="singleContainer">
@@ -50,7 +60,11 @@ const Single = () => {
                 <h1 className="itemTitle">{username}</h1>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
-                  <span className="itemValue">{email}</span>
+                  <span className="itemValue">
+                    {/* {data[4].email}  */}
+                    {email}
+                   
+                    </span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Phone:</span>
@@ -59,7 +73,7 @@ const Single = () => {
                 <div className="detailItem">
                   <span className="itemKey">Address:</span>
                   <span className="itemValue">
-                    {city}
+                  {city}
                   </span>
                 </div>
                 <div className="detailItem">

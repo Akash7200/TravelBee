@@ -35,6 +35,11 @@ export const userInputs = [
       type: "text",
       placeholder: "Dhaka",
     },
+    // {
+    //   id: "isAdmin",
+    //   label: "Admin",
+    //   type: "boolean",
+    // },
   ];
   
   export const hotelInputs = [
