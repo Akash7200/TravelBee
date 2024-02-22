@@ -16,6 +16,7 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom"
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -78,7 +79,10 @@ const Header = ({ type }) => {
             <p className="headerDesc">
             Keep calm and never stop travelling. Because travel’s in our bones
             </p>
-           { !user && <button className="headerBtn">Sign in / Register</button>}
+           { !user && 
+           <Link to="/register" style={{color:"inherit", textDecoration:"none"}}>
+           <button className="headerBtn">Sign up / Register</button>
+           </Link>}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />

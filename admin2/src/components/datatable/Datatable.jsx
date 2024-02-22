@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 
-const Datatable = ({columns}) => {
+const Datatable = ({ columns }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [list, setList] = useState();
-  const {data, loading, error} = useFetch(`/${path}`)
+  const { data, loading, error } = useFetch(`/${path}`)
 
 
   useEffect(() => {
@@ -18,11 +18,11 @@ const Datatable = ({columns}) => {
   }, [data]);
 
   const handleDelete = async (id) => {
-    try{
+    try {
       await axios.delete(`/${path}/${id}`)
       setList(list.filter((item) => item._id !== id));
     }
-    catch(err){
+    catch (err) {
     }
   };
 
@@ -34,7 +34,10 @@ const Datatable = ({columns}) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            {/* <Link to="/users/test" style={{ textDecoration: "none" }}>
+              <div className="viewButton">View</div>
+            </Link> */}
+            <Link to={`/${path}/${params.row._id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
