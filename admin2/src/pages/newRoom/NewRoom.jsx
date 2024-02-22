@@ -13,6 +13,7 @@ const NewRoom = () => {
 
 
   const {data, loading, error} = useFetch("/hotels")
+  console.log(data) 
 
 
   const handleChange= (e) =>{
@@ -25,7 +26,7 @@ const NewRoom = () => {
       const newRoom = {
         ...info, hotelId
       }
-      await axios.post(`/rooms`, newRoom)
+      await axios.post(`localhost:8000/api/rooms/65b9e5ceae49d9d727f5fa7f`, newRoom)
     }catch(err){
       console.log(err)
     }
@@ -52,11 +53,12 @@ const NewRoom = () => {
               ))}
               <div className="formInput">
                   <label>Choose a hotel</label>
-                  <select id="hotelId" onChange={e=>sethotelId(e.target.value)}>
-                    {loading? "loading...": data && data.map(hotel=>{
-                        <option value={hotel._id}>{hotel.name}</option>
-                    })}
+                  <select id="hotelId" onChange={e => sethotelId(e.target.value)}>
+                     {loading ? "loading..." : data && data.map(hotel => (
+                      <option key = {hotel._id} value={hotel._id}>{hotel.name}</option>
+                      ))}
                   </select>
+
                 </div>
               <button onClick={handleClick}>Send</button>
             </form>

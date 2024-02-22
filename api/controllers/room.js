@@ -77,3 +77,12 @@ export const getRooms = async (req, res, next)=>{
         next(err)
     }
 }
+
+export const getOneRoom = async (req, res, next)=>{
+    try{
+        const room = await Room.findById(req.params.roomId)
+        res.status(200).json(room.roomNumbers.id(req.params.suiteId))
+    }catch(err){
+        next(err)
+    }
+}

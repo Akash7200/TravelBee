@@ -20,14 +20,11 @@ const New = ({ inputs, title }) => {
     data.append("file", file)
     data.append("upload_preset", "upload")
     try{
+
+
       const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/daq9b0bqv/image/upload", data)
+    
 
-
-      if (uploadRes.data) {
-        const { url } = uploadRes.data;
-      } else {
-        const { url } = "";
-      }
       const {url} = uploadRes.data 
 
       const newUser = {
@@ -59,7 +56,7 @@ const New = ({ inputs, title }) => {
               src={
                 file
                   ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                  : "https://i.ibb.co/MBtjqXQ/no-avatar.gif"
               }
               alt=""
             />

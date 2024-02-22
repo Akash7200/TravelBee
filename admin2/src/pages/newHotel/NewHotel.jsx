@@ -14,6 +14,7 @@ const NewHotel = () => {
 
 
   const {data, loading, error} = useFetch("/rooms")
+  console.log(data)
 
 
   const handleChange= (e) =>{
