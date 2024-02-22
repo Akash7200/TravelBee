@@ -6,6 +6,7 @@ import List from "../../components/table/Table";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
+import axios from "axios";
 
 const Single = () => {
 
@@ -13,8 +14,12 @@ const Single = () => {
   const path = location.pathname.split("/")[1];
   const id = location.pathname.split("/")[2];
   const { data, loading, error } = useFetch(`/${path}`);
+  console.log(path, id, data);
 
 
+
+  const selectedData = data.find(item => item._id === id.toString()); // Assuming 'id' is of the same type as 'item.id'
+  console.log(selectedData);
 
 
   // // Filter the array to find the data with the same id
@@ -29,11 +34,13 @@ const Single = () => {
   //   // ...
   // }
 
-  const username = data && data.length > 4 ? data[3].username : '';
-  const email = data && data.length > 4 ? data[3].email : '';
-  const phone = data && data.length > 4 ? data[3].phone : '';
-  const city = data && data.length > 4 ? data[3].city : '';
-  const country = data && data.length > 4 ? data[3].country : '';
+
+  const username = data && data.length > 4 ? selectedData.username : '';
+  const email = data && data.length > 4 ? selectedData.email : '';
+  const phone = data && data.length > 4 ? selectedData.phone : '';
+  const city = data && data.length > 4 ? selectedData.city : '';
+  const country = data && data.length > 4 ? selectedData.country : '';
+  const img = data && data.length > 4 ? selectedData.img : '';
 
 
   // useEffect(() => {
@@ -52,7 +59,7 @@ const Single = () => {
             <h1 className="title">Information</h1>
             <div className="item">
               <img
-                src="http://res.cloudinary.com/daq9b0bqv/image/upload/v1707768162/upload/lwbwn7rwtpijgff5lcot.png"
+                src={img}
                 alt=""
                 className="itemImg"
               />
