@@ -6,11 +6,19 @@ import { useContext, useState } from "react"
 import { SearchContext } from "../../context/SearchContext"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 
-const Reserve = ({ setOpen, hotelId }) => {
+
+
+const Reserve = ({ setOpen, hotelId, userData, hotelData }) => {
+
     const [selectedRooms, setSelectedRooms] = useState([])
     const { data, loading, error } = useFetch(`http://localhost:8000/api/hotels/room/${hotelId}`)
     const { dates } = useContext(SearchContext)
+    //
+    const [roomId, setRoomId] = useState(null);
+
+    console.log(data)
 
     const getDatesInRange = (startDate, endDate) => {
         const start = new Date(startDate)
@@ -45,20 +53,33 @@ const Reserve = ({ setOpen, hotelId }) => {
 
     }
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
 
     const handleClick = async () => {
-        try{
+        try {
 
-            await Promise.all(selectedRooms.map(roomId=>{
-                const res = axios.put(`http://localhost:8000/api/rooms/availability/${roomId}`,{dates:alldates});
+            //
+
+            const selectedRoomIds = selectedRooms.map((room) => room.roomNumber);
+            setRoomId(selectedRoomIds);
+
+
+            await Promise.all(selectedRooms.map(roomId => {
+                const res = axios.put(`http://localhost:8000/api/rooms/availability/${roomId}`, { dates: alldates });
                 return res.data;
             }))
             setOpen(false)
-            navigate("/")
+            navigate("/order", {
+                state: {
+                    userData: userData,
+                    hotelData: hotelData,
+                    hotelId: hotelId,
+                    roomId: selectedRoomIds
+                }
+            });
 
-        }catch(err)
-        {
+        } catch (err) {
 
         }
 
@@ -70,7 +91,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                 <FontAwesomeIcon icon={faCircleXmark} className="rClose" onClick={() =>
                     setOpen(false)} />
                 <span>Select your rooms : </span>
-                {data.map(item => (
+                {/* {data.map(item => (
                     <div className="rItem">
                         <div className="rItemInfo">
                             <div className="rTitle">{item.title}</div>
@@ -89,7 +110,28 @@ const Reserve = ({ setOpen, hotelId }) => {
                         </div>
 
                     </div>
+                ))} */}
+
+                {data.map(item => (
+                    <div key={item.id} className="rItem">
+                        <div className="rItemInfo">
+                            <div className="rTitle">{item.title}</div>
+                            <div className="rDesc">{item.desc}</div>
+                            <div className="rMax">Max people: <b>{item.maxPeople}</b></div>
+                            <div className="rPrice">{item.price}</div>
+                        </div>
+                        <div className="rSelectRooms">
+                            {item.roomNumbers.map(roomNumber => (
+                                <div key={roomNumber._id} className="room">
+                                    <label>{roomNumber.number}</label>
+                                    <input type="checkbox" value={roomNumber._id} onChange={handleSelect} disabled={!isAvailable(roomNumber)} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 ))}
+
+
 
                 <button onClick={handleClick} className="rButton">Reserve Now!</button>
             </div>

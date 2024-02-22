@@ -48,7 +48,7 @@ const New = ({ inputs, title }) => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Add New Admin/User</h1>
+          <h1>Add New Admin</h1>
         </div>
         <div className="bottom">
           <div className="left">
