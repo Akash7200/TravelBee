@@ -87,17 +87,17 @@ const EditUser = ({ inputs, title }) => {
                 <input onChange={handleChange} type="text" placeholder={data.username} id="username" />
               </div>
 
-              {/* <div className="formInput" key="email">
+              <div className="formInput" key="email">
                 <label>Email</label>
                 <input onChange={handleChange} type="email" placeholder={data.email} id="email" />
-              </div>
+              </div> 
 
-              <div className="formInput" key="phone">
+               <div className="formInput" key="phone">
                 <label>Phone</label>
                 <input onChange={handleChange} type="text" placeholder={data.phone} id="phone" />
               </div>
 
-              <div className="formInput" key="country">
+              {/* <div className="formInput" key="country">
                 <label>Country</label>
                 <input onChange={handleChange} type="text" placeholder={data.country} id="country" />
               </div>

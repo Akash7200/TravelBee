@@ -6,6 +6,18 @@ const Featured = () => {
 
     const { data, loading, error} = useFetch("http://localhost:8000/api/hotels/countByCity?cities=berlin,madrid,london");
 
+    // const payload = {
+    //     pathname: '/hotels',
+    //     state: { key: 'berlin' } // Your payload data
+    //   };
+
+    //   const {dispatch} = useContext(SearchContext);
+
+    //   const handleSearch = () => {
+    //     dispatch({type:"NEW_SEARCH", payload:{destination, dates, options}})
+    //     navigate("/hotels", { state: { destination, dates, options } });
+    //   };
+
     return (
         <div className="featured">
             {loading ? (
@@ -15,7 +27,7 @@ const Featured = () => {
                 <img width="300px" height="250px" src="https://a.cdn-hotels.com/gdcs/production47/d644/0f1f2695-8549-4f5f-bdf1-9deab5ffaba5.jpg?impolicy=fcrop&w=1600&h=1066&q=medium" alt="" className="featuredImg" />
 
                 <div className="featuredTitles">
-                    <h1><Link to = {`/hotels`}>Berlin</Link></h1>
+                    <h1>Berlin</h1>
                     <h2>{data[0]} properties</h2>
                 </div>
             </div>

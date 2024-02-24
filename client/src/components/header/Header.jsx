@@ -80,7 +80,7 @@ const Header = ({ type }) => {
             Life’s better with a backpack
             </h1>
             <p className="headerDesc">
-            Keep calm and never stop travelling. Because travel’s in our bones
+            Keep calm and never stop travelling. Because travelling’s in our bones
             </p>
            { !user && 
            <Link to="/register" style={{color:"inherit", textDecoration:"none"}}>
