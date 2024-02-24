@@ -83,3 +83,16 @@ export const getAllReview = async (req, res, next)=>{
     }
 }
 
+export const getAvgRating = async (req, res, next) => {
+    try {
+        const reviews = await Review.find({ hotelId: req.params.hotelId });
+        const totalReviews = reviews.length;
+        const totalRating = reviews.reduce((acc, review) => acc + review.rating, 0);
+        const avgRating = totalRating / totalReviews;
+        const avgRatingFormatted = avgRating.toFixed(1);
+        res.status(200).json({ avgRatingFormatted });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+}
+
