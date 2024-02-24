@@ -41,7 +41,7 @@ const ReviewForm = () => {
       };
 
       const res = await axios.post("http://localhost:8000/api/reviews", formData);
-      window.location.reload();
+      //window.location.reload();
       
 
       console.log(formData); // For testing, you can replace this with actual submission logic
