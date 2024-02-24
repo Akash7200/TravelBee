@@ -1,5 +1,6 @@
 import useFetch from "../../hooks/useFetch.js"
 import "./featured.css"
+import { Link } from "react-router-dom";
 
 const Featured = () => {
 
@@ -14,7 +15,7 @@ const Featured = () => {
                 <img width="300px" height="250px" src="https://a.cdn-hotels.com/gdcs/production47/d644/0f1f2695-8549-4f5f-bdf1-9deab5ffaba5.jpg?impolicy=fcrop&w=1600&h=1066&q=medium" alt="" className="featuredImg" />
 
                 <div className="featuredTitles">
-                    <h1>Berlin</h1>
+                    <h1><Link to = {`/hotels`}>Berlin</Link></h1>
                     <h2>{data[0]} properties</h2>
                 </div>
             </div>

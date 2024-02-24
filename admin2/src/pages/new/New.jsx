@@ -48,7 +48,7 @@ const New = ({ inputs, title }) => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Add New Admin</h1>
+          <h1>Add New Admin/User</h1>
         </div>
         <div className="bottom">
           <div className="left">
@@ -81,6 +81,13 @@ const New = ({ inputs, title }) => {
                   <input onChange={handleChange} type={input.type} placeholder={input.placeholder} id={input.id}/>
                 </div>
               ))}
+              <div className="formInput">
+                <label>Admin</label>
+                <select onChange={handleChange} id="isAdmin">
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
               <button onClick={handleClick}>Send</button>
             </form>
           </div>
