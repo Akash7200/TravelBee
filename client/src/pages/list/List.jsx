@@ -17,8 +17,9 @@ const List = () => {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
-  const { data, loading, error, reFetch} = useFetch(`http://localhost:8000/api/hotels?city=${destination}&min=${min || 0}&max=${max || 1000}`);
-
+  const { data, loading, error, reFetch } = useFetch(`http://localhost:8000/api/hotels?city=${destination}&min=${min || 0}&max=${max || 1000}`);
+  const { data: hotelData, loading: hotelLoading, error: hotelError } = useFetch("http://localhost:8000/api/hotels");
+  console.log(hotelData)
   const handleClick = () => {
     reFetch();
   }
@@ -56,13 +57,13 @@ const List = () => {
                   <span className="lsOptionText">
                     Min price <small>per night</small>
                   </span>
-                  <input type="number" onChange={e=>setMin(e.target.value)} className="lsOptionInput" />
+                  <input type="number" onChange={e => setMin(e.target.value)} className="lsOptionInput" />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
                     Max price <small>per night</small>
                   </span>
-                  <input type="number" onChange={e=>setMax(e.target.value)} className="lsOptionInput" />
+                  <input type="number" onChange={e => setMax(e.target.value)} className="lsOptionInput" />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">Adult</span>
@@ -95,14 +96,35 @@ const List = () => {
             </div>
             <button onClick={handleClick}>Search</button>
           </div>
+          {/* <div className="listResult">
+            {loading ? "loading..." : <>
+              {data.map(item => (
+                <SearchItem item={item} key={item._id} />
+              ))}
+
+            </>}
+          </div> */}
+          
           <div className="listResult">
-           {loading ? "loading...":  <>
-           {data.map(item  => (
-             <SearchItem item={item} key={item._id} />
-           ))}
-           
-            </> }
-          </div>
+    {loading ? (
+        "Loading..."
+    ) : !destination ? (
+        // If destination is null, show all hotels in the list
+        <>
+            {hotelData.map((item) => (
+                <SearchItem item={item} key={item._id} />
+            ))}
+        </>
+    ) : (
+        // If destination is provided, render search results normally
+        <>
+            {data.map((item) => (
+                <SearchItem item={item} key={item._id} />
+            ))}
+        </>
+    )}
+</div>
+
         </div>
       </div>
     </div>

@@ -8,11 +8,7 @@ const Userprofile = () => {
     const [userOrders, setUserOrders] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const { data: hotelData, loading: hotelLoading, error: hotelError } = useFetch(`http://localhost:8000/api/orders/getUserOrder/${user._id}`);
-    
 
-    console.log("habijabi" + hotelData)
-    
     useEffect(() => {
         const fetchUserOrders = async () => {
             setLoading(true);
@@ -30,7 +26,7 @@ const Userprofile = () => {
             }
         };
 
-        if (user) {
+        if (user && user._id) {
             fetchUserOrders();
         }
     }, [user]);
@@ -52,7 +48,8 @@ const Userprofile = () => {
                 <p><b>City:</b> {user.city}</p>
                 <p><b>Country:</b> {user.country}</p>
                 {/* Display user orders */}
-                <h3>User Orders:</h3>
+                <h3>User Bookings:</h3>
+                
                 {loading ? (
                     <p>Loading...</p>
                 ) : error ? (
@@ -60,7 +57,8 @@ const Userprofile = () => {
                 ) : (
                     <ul>
                         {userOrders.map(order => (
-                            <li key={order.id}>{order.name} - {order.price}</li>
+                            <li key={order.id}> Name: {order.hotelName}, Address: {order.address}, Cost: {order.cost}, Check-in: {order.checkIn}, Check-out: {order.checkOut} </li>
+                            
                         ))}
                     </ul>
                 )}

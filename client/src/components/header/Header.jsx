@@ -17,8 +17,11 @@ import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom"
+import useFetch from "../../hooks/useFetch";
+import SearchItem from "../searchItem/SearchItem";
 
 const Header = ({ type }) => {
+  
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
   const [dates, setDates] = useState([
