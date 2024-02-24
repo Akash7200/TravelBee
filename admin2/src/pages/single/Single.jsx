@@ -3,7 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
@@ -15,24 +15,10 @@ const Single = () => {
   const id = location.pathname.split("/")[2];
   const { data, loading, error } = useFetch(`/${path}`);
   console.log(path, id, data);
-
-
-
+  
   const selectedData = data.find(item => item._id === id.toString()); // Assuming 'id' is of the same type as 'item.id'
-  console.log(selectedData);
+  //console.log(selectedData);
 
-
-  // // Filter the array to find the data with the same id
-  // const selectedData = data.find(item => item.id === id);
-  // console.log(selectedData);
-
-  // if (selectedData) {
-  //   // Access the properties of selectedData here
-  //   console.log(selectedData.id);
-  //   console.log(selectedData.name);
-  //   console.log(selectedData.email);
-  //   // ...
-  // }
 
 
   const username = data && data.length > 4 ? selectedData.username : '';
@@ -40,7 +26,7 @@ const Single = () => {
   const phone = data && data.length > 4 ? selectedData.phone : '';
   const city = data && data.length > 4 ? selectedData.city : '';
   const country = data && data.length > 4 ? selectedData.country : '';
-  const img = data && data.length > 4 ? selectedData.img : '';
+  const img = data && data.length > 4 ? selectedData.img : "https://i.ibb.co/MBtjqXQ/no-avatar.gif";
 
 
   // useEffect(() => {
@@ -55,11 +41,11 @@ const Single = () => {
         <Navbar />
         <div className="top">
           <div className="left">
-            <div className="editButton">Edit</div>
+            <Link to = {`/users/edit/${id}`}> <div className="editButton">Edit</div> </Link>
             <h1 className="title">Information</h1>
             <div className="item">
               <img
-                src={img}
+                src={img || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"}
                 alt=""
                 className="itemImg"
               />
