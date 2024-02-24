@@ -30,6 +30,8 @@ const Hotel = () => {
   const { user } = useContext(AuthContext)
   const navigate = useNavigate()
 
+  console.log(id)
+
   const { dates, options } = useContext(SearchContext);
 
 
@@ -146,8 +148,8 @@ const Hotel = () => {
           </div>
           <Review/>
           <ReviewList />
-          <MailList />
-          <Footer />
+          {/* <MailList />
+          <Footer /> */}
         </div>}
       {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>

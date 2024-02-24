@@ -21,6 +21,7 @@ const Order = () => {
 
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+    console.log(hotelId)
     console.log(selectedRooms)
     console.log(roomId)
     console.log(suiteId)
