@@ -6,25 +6,8 @@ import { useState } from "react";
 
 const Featured = () => {
 
-<<<<<<< HEAD
-    const { data, loading, error} = useFetch("http://localhost:8000/api/hotels/countByCity?cities=berlin,madrid,london");
-
-    // const payload = {
-    //     pathname: '/hotels',
-    //     state: { key: 'berlin' } // Your payload data
-    //   };
-
-    //   const {dispatch} = useContext(SearchContext);
-
-    //   const handleSearch = () => {
-    //     dispatch({type:"NEW_SEARCH", payload:{destination, dates, options}})
-    //     navigate("/hotels", { state: { destination, dates, options } });
-    //   };
-
-=======
     const { data, loading, error } = useFetch("http://localhost:8000/api/hotels/countByCity?cities=berlin,madrid,london");
     
->>>>>>> b6b7bb0a572d1578c47469ef8a6552fd1a8de98b
     return (
         <div className="featured">
             {loading ? (
@@ -33,16 +16,10 @@ const Featured = () => {
                 <><div className="featuredItem">
                     <img width="300px" height="250px" src="https://a.cdn-hotels.com/gdcs/production47/d644/0f1f2695-8549-4f5f-bdf1-9deab5ffaba5.jpg?impolicy=fcrop&w=1600&h=1066&q=medium" alt="" className="featuredImg" />
 
-<<<<<<< HEAD
-                <div className="featuredTitles">
-                    <h1>Berlin</h1>
-                    <h2>{data[0]} properties</h2>
-=======
                     <div className="featuredTitles">
                         <h1>Berlin</h1>
                         <h2>{data[0]} properties</h2>
                     </div>
->>>>>>> b6b7bb0a572d1578c47469ef8a6552fd1a8de98b
                 </div>
 
                     <div className="featuredItem">

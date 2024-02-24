@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const SingleHotel = () => {
   const location = useLocation();
@@ -50,7 +51,7 @@ const SingleHotel = () => {
         <Navbar />
         <div className="top">
           <div className="left">
-            <div className="editButton">Edit</div>
+          <Link to = {`/hotels/edit/${id}`}> <div className="editButton">Edit</div> </Link>
             <h1 className="title">Information</h1>
             <div className="item">
               {images.map((imageUrl, index) => (
@@ -84,16 +85,7 @@ const SingleHotel = () => {
           </div>
         </div>
         <div className="roomsList">
-          <h2>Suites Available:</h2>
-          <ul>
-            {rooms.map((room, index) => (
-              <li key={index}>
-                <p>{room}</p>
-
-                {/* You can render other room details here */}
-              </li>
-            ))}
-          </ul>
+          
         </div>
       </div>
     </div>
