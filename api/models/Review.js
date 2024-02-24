@@ -32,10 +32,10 @@ const reviewSchema = new mongoose.Schema({
             const currentDate = new Date();
 
             // Adjust the timezone offset to GMT+6:00
-            const timezoneOffset = -6 * 60; // Offset is in minutes
+            const timezoneOffset = 6 * 60; // Offset is in minutes
             const utcTimestamp = currentDate.getTime() + (currentDate.getTimezoneOffset() * 60000);
             const gmt6Timestamp = new Date(utcTimestamp + (timezoneOffset * 60000));
-            gmt6Timestamp.setHours(gmt6Timestamp.getHours() - 6);
+            gmt6Timestamp.setHours(gmt6Timestamp.getHours() + 6);
             return gmt6Timestamp;
         }
     }
