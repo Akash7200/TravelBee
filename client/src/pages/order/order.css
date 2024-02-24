@@ -34,6 +34,24 @@
 }
 
 .confirm-button {
+    margin-top: 10px;
+    display: block;
+    max-width: 100%;
+    padding: 10px;
+    background-color: maroon;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom:10px;
+}
+
+.confirm-button:hover {
+    background-color: green;
+}
+
+.cancel-button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -43,8 +61,10 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    
+    
 }
 
-.confirm-button:hover {
+.cancel-button:hover {
     background-color: green;
 }

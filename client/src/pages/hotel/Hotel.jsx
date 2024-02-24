@@ -16,6 +16,8 @@ import useFetch from "../../hooks/useFetch";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
+import ReviewList from "../../components/reviewlist/ReviewList";
+import Review from "../review/Review";
 
 const Hotel = () => {
   const location = useLocation();
@@ -142,6 +144,8 @@ const Hotel = () => {
               </div>
             </div>
           </div>
+          <Review/>
+          <ReviewList />
           <MailList />
           <Footer />
         </div>}
