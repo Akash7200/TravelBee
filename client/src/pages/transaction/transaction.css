@@ -6,7 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('https://cdn.vectorstock.com/i/1000x1000/89/73/colorful-background-transaction-in-cash-vector-15208973.webp'); /* Add your background image URL here */
+    background-color: lightgrey;
+    /* background-image: url('https://cdn.vectorstock.com/i/1000x1000/89/73/colorful-background-transaction-in-cash-vector-15208973.webp');  */
     background-size: cover; 
   }
   
