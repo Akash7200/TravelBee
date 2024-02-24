@@ -44,6 +44,7 @@ const EditUser = ({ inputs, title }) => {
       }
 
       console.log(newUser)
+      console.log("http://localhost:8000/api/users/" + id)
       await axios.put(`http://localhost:8000/api/users/${id}`, newUser)
 
     } catch (err) {

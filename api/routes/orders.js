@@ -9,7 +9,7 @@ router.post("/", createOrder);
 
 
 //delete
-router.delete("/:id", deleteOrder);
+router.delete("/:userId/:hotelId", deleteOrder);
 
 //get
 router.get("/find/:id", getOrder);
@@ -17,7 +17,7 @@ router.get("/find/:id", getOrder);
 //getall
 router.get("/", getOrders);
 
-router.get("/:hotelId", getHotelOrder);
-router.get("/:userId", getUserOrder);
+router.get("/getHotelOrder/:hotelId", getHotelOrder);
+router.get("/getUserOrder/:userId", getUserOrder);
 
 export default router;

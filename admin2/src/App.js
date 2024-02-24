@@ -42,13 +42,13 @@ function App() {
             <Route path="hotels">
               <Route index element={<ProtectedRoute><List columns={hotelColumns} /></ProtectedRoute>} />
               <Route path=":hotelId" element={ <ProtectedRoute> <SingleHotel /> </ProtectedRoute>} />
-              <Route path="newHotel" element={<ProtectedRoute><NewHotel /></ProtectedRoute>} />
+              <Route path="new" element={<ProtectedRoute><NewHotel /></ProtectedRoute>} />
             </Route>
 
             <Route path="rooms">
               <Route index element={<ProtectedRoute><List columns={roomColumns} /></ProtectedRoute>} />
               <Route path=":productId" element={ <ProtectedRoute> <Single /> </ProtectedRoute>} />
-              <Route path="newRoom" element={<ProtectedRoute><NewRoom /></ProtectedRoute>} />
+              <Route path="new" element={<ProtectedRoute><NewRoom /></ProtectedRoute>} />
             </Route>
           </Route>
         </Routes>

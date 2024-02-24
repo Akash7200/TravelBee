@@ -5,6 +5,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    userId: {
+        type: String,
+        required: true
+    },
     phone: {
         type: String,
         required: true
@@ -20,9 +24,6 @@ const orderSchema = new mongoose.Schema({
     address: {
         type: String,
         required: true
-    },
-    cost: {
-        type: [String],
     },
     cost: {
         type: Number,

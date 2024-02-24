@@ -1,6 +1,4 @@
-import Hotel from "../models/Hotel.js"
 import Order from "../models/Order.js"
-import Room from "../models/Room.js"
 
 
 export const createOrder = async (req, res, next)=>{
@@ -15,14 +13,27 @@ export const createOrder = async (req, res, next)=>{
 }
 
 
-export const deleteOrder = async (req, res, next)=>{
-    try{
-        await Order.findByIdAndDelete(req.params.id)
-        res.status(200).json("Booking has been cancelled...")
-    }catch(err){
-        res.status(500).json(err)
+
+export const deleteOrder = async (req, res, next) => {
+    try {
+        const { userId, hotelId } = req.body;
+
+        if (!userId || !hotelId) {
+            return res.status(400).json({ message: 'Both userId and hotelId are required.' });
+        }
+
+        // Find and delete the order matching userId and hotelId
+        const deletedOrder = await Order.findOneAndDelete({ userId, hotelId });
+
+        if (!deletedOrder) {
+            return res.status(404).json({ message: 'Order not found.' });
+        }
+
+        res.status(200).json({ message: 'Order has been deleted.' });
+    } catch (err) {
+        next(err);
     }
-}
+};
 
 export const getOrder = async (req, res, next)=>{
     try{
@@ -47,24 +58,23 @@ export const getOrders = async (req, res, next)=>{
 
 
 
-export const getHotelOrder = async (req, res, next)=>{
-    try{
-        const hotel = await Hotel.findById(req.params.id)
-        const list = await Promise.all(hotel.orders.map(order=>{
-            return Order.findById(order);
-        }))
+export const getHotelOrder = async (req, res, next) => {
+    try {
+        const orders = await Order.find({ hotelId: req.params.hotelId });
+        res.status(200).json(orders);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-    catch(err){
-        next(err)
-    }
-}
+};
 
-export const getUserOrder = async (req, res, next)=>{
-    try{
-        const list = await Order.find({userId: req.params.id})
-        res.status(200).json(list)
-    }catch(err){
-        next(err)
+
+
+export const getUserOrder = async (req, res, next) => {
+    try {
+        const orders = await Order.find({ userId: req.params.userId });
+        res.status(200).json(orders);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-}
+};
 
