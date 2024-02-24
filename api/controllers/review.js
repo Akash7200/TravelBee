@@ -53,23 +53,23 @@ export const deleteReviewByUserId = async (req, res, next) => {
     }
   };
 
-export const getReviewByHotel = async (req, res, next)=>{
-    try{
-        const review = await Review.findById(req.params.id)
-        res.status(200).json(review)
-    }catch(err){
-        res.status(500).json(err)
+  export const getReviewByHotel = async (req, res, next) => {
+    try {
+        const reviews = await Review.find({ hotelId: req.params.hotelId });
+        res.status(200).json(reviews);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-}
+};
 
-export const getReviewByUser = async (req, res, next)=>{
-    try{
-        const review = await Review.findById(req.params.id)
-        res.status(200).json(review)
-    }catch(err){
-        res.status(500).json(err)
+export const getReviewByUser = async (req, res, next) => {
+    try {
+        const reviews = await Review.find({ userId: req.params.userId });
+        res.status(200).json(reviews);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-}
+};
 
 export const getAllReview = async (req, res, next)=>{
     const query = req.query

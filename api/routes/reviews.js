@@ -1,6 +1,6 @@
 import express from "express"
 import Review from "../models/Review.js";
-import { createReview, deleteReview, getAllReview, getReviewByHotel, getReviewByUser } from "../controllers/review.js";
+import { createReview, deleteReview, deleteReviewByHotelId, deleteReviewByUserId, getAllReview, getReviewByHotel, getReviewByUser } from "../controllers/review.js";
 
 const router = express.Router();
 
@@ -9,9 +9,13 @@ router.post("/", createReview);
 
 router.delete("/:id", deleteReview);
 
-router.get("/find/:id", getReviewByHotel);
+router.delete("/deleteByUserId/:userId", deleteReviewByUserId);
 
-router.get("/find/:id", getReviewByUser);
+router.delete("/deleteByHotelId/:hotelId", deleteReviewByHotelId);
+
+router.get("/findByHotel/:hotelId", getReviewByHotel);
+
+router.get("/findByUser/:userId", getReviewByUser);
 
 router.get("/", getAllReview)
 
