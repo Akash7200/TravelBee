@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './transaction.css';
+import { useNavigate } from 'react-router-dom';
 
 const Transaction = () => {
     const [selectedMethod, setSelectedMethod] = useState('');
@@ -7,6 +8,7 @@ const Transaction = () => {
     const [otp, setOtp] = useState('');
     const [pin, setPin] = useState('');
     const [otpSent, setOtpSent] = useState(false);
+    const navigate = useNavigate();
 
     // Constant PIN for a specific phone number
     const CONSTANT_PIN = '1234';
@@ -30,6 +32,8 @@ const Transaction = () => {
                 setOtp(generatedOtp.toString());
             }, 2000); // Simulate a 2-second delay before receiving OTP
         }
+
+        navigate("/")
     };
 
     return (
