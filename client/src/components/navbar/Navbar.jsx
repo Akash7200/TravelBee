@@ -29,7 +29,14 @@ const Navbar = () => {
           <span className="logo"><h2>TravelBee</h2></span>
         </Link>
         <div className="navItems">
-          {user && <span className="username">{user.username}</span>}
+          {user && (
+            <Link
+              to="/userprofile"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              <span className="username">{user.username}</span>
+            </Link>
+          )}
           {user && <button className="navButton" onClick={handleLogout}>Logout</button>}
           {!user && (
             <>
