@@ -18,6 +18,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
 import ReviewList from "../../components/reviewlist/ReviewList";
 import Review from "../review/Review";
+import React from "react";
 
 const Hotel = () => {
   const location = useLocation();
@@ -104,6 +105,10 @@ const Hotel = () => {
           <div className="hotelWrapper">
             <button className="bookNow">Reserve or Book Now!</button>
             <h1 className="hotelTitle">{data.name}</h1>
+            <div classname = "tagscontainer">
+            {data.tags}
+            </div>
+            
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{data.address}</span>

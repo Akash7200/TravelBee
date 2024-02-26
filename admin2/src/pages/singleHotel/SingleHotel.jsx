@@ -23,7 +23,7 @@ const SingleHotel = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const selectedData = data.find(item => item._id === id.toString());
-  
+
 
   const name = selectedData?.name || '';
   const type = selectedData?.type || '';
@@ -36,11 +36,12 @@ const SingleHotel = () => {
   const featured = selectedData?.featured || '';
   const images = selectedData?.photos || [];
   const rooms = selectedData?.rooms || [];
+  const tags = selectedData?.tags || [];
 
   console.log(selectedData);
   console.log(rooms)
 
-  
+
 
 
 
@@ -51,7 +52,7 @@ const SingleHotel = () => {
         <Navbar />
         <div className="top">
           <div className="left">
-          <Link to = {`/hotels/edit/${id}`}> <div className="editButton">Edit</div> </Link>
+            <Link to={`/hotels/edit/${id}`}> <div className="editButton">Edit</div> </Link>
             <h1 className="title">Information</h1>
             <div className="item">
               {images.map((imageUrl, index) => (
@@ -80,12 +81,22 @@ const SingleHotel = () => {
                   <span className="itemKey">Country:</span>
                   <span className="itemValue">{distance}</span>
                 </div>
+                <div className="detailItem">
+                  <span className="itemKey">Tags:</span>
+                  <div className="tagsContainer">
+                    {tags.map((tag, index) => (
+                      <span key={index} className="tag">{tag}</span>
+                      
+                    ))}
+                  </div>
+                </div>
+                
               </div>
             </div>
           </div>
         </div>
         <div className="roomsList">
-          
+
         </div>
       </div>
     </div>

@@ -97,11 +97,12 @@ const EditUser = ({ inputs, title }) => {
                 <input onChange={handleChange} type="text" placeholder={data.phone} id="phone" />
               </div>
 
-              {/* <div className="formInput" key="country">
-                <label>Country</label>
-                <input onChange={handleChange} type="text" placeholder={data.country} id="country" />
-              </div>
+               {/* <div className="formInput" key="tags">
+                <label>Tags</label>
+                <input onChange={handleChange} type="textarea" placeholder={data.tags} id="tags" />
+              </div> */}
 
+              {/*
               <div className="formInput" key="city">
                 <label>City</label>
                 <input onChange={handleChange} type="text" placeholder={data.city} id="city" />

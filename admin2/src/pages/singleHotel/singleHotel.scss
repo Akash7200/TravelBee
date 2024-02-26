@@ -48,6 +48,8 @@
               .detailItem {
                 margin-bottom: 10px;
                 font-size: 14px;
+
+                
   
                 .itemKey {
                   font-weight: bold;
@@ -73,6 +75,19 @@
         box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
         padding: 20px;
         margin: 10px 20px;
+      }
+
+      .tagsContainer {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      
+      .tag {
+        background-color: #e0e0e0;
+        padding: 3px 8px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        border-radius: 4px;
       }
   
       .title {

@@ -11,27 +11,33 @@ const NewHotel = () => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
   const [rooms, setRooms] = useState([]);
+  const [tags, setTags] = useState([]);
 
 
-  const {data, loading, error} = useFetch("/rooms")
-  console.log(data)
+  const { data, loading, error } = useFetch("/rooms")
 
+  const handleChange = (e) => {
+    if (e.target.id === "tags") {
+      // Convert comma-separated string into an array of tags
+      const tagsArray = e.target.value.split(",").map(tag => tag.trim());
+      setInfo((prev) => ({ ...prev, [e.target.id]: tagsArray }));
+    } else {
+      setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    }
+  };
+  
 
-  const handleChange= (e) =>{
-    setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value}))
-  }
-
-  const handleSelect= (e) =>{
+  const handleSelect = (e) => {
     const value = Array.from(e.target.selectedOptions, (option) => option.value);
     setRooms(value);
   }
 
   console.log(files)
 
-  const handleClick= async (e) =>{
+  const handleClick = async (e) => {
     e.preventDefault()
-    try{
-      const list = await Promise.all(Object.values(files).map(async file=>{
+    try {
+      const list = await Promise.all(Object.values(files).map(async file => {
         const data = new FormData()
         data.append("file", file)
         data.append("upload_preset", "upload")
@@ -39,8 +45,8 @@ const NewHotel = () => {
         const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/daq9b0bqv/image/upload", data)
 
 
-        const {url} = uploadRes.data
-  
+        const { url } = uploadRes.data
+
         return url
 
       }))
@@ -48,8 +54,9 @@ const NewHotel = () => {
       const newhotel = {
         ...info, rooms, photos: list
       }
+      console.log(newhotel)
       await axios.post(`/hotels`, newhotel)
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
   }
@@ -88,7 +95,7 @@ const NewHotel = () => {
                 />
               </div>
 
-              
+
 
               {hotelInputs.map((input) => (
                 <div className="formInput" key={input.id}>
@@ -96,6 +103,17 @@ const NewHotel = () => {
                   <input id={input.id} onChange={handleChange} type={input.type} placeholder={input.placeholder} />
                 </div>
               ))}
+
+              <div className="formInput" key="tags">
+                <label>Tags</label>
+                <textarea
+                  onChange={handleChange}
+                  placeholder={tags}
+                  id="tags"
+                  rows={2} // Adjust the number of rows as needed
+                />
+              </div>
+
 
               <div className="formInput">
                 <label>Featured</label>
