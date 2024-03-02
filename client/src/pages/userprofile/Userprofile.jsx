@@ -57,7 +57,7 @@ const Userprofile = () => {
                 ) : (
                     <ul>
                         {userOrders.map(order => (
-                            <li key={order.id}> Name: {order.hotelName}, Address: {order.address}, City: {order.city} Cost: {order.cost}, Check-in: {order.checkIn}, Check-out: {order.checkOut} </li>
+                            <li key={order.id}> Name: {order.hotelName}, Address: {order.address}, City: {order.city} Cost: {order.cost}, Check-in: {new Date(order.checkIn).toLocaleString()}, Check-out: {new Date(order.checkOut).toLocaleString()} </li>
                             
                         ))}
                     </ul>

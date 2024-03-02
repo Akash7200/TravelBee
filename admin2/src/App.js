@@ -16,6 +16,7 @@ import SingleHotel from "./pages/singleHotel/SingleHotel";
 import EditUser from "./pages/editUser/EditUser";
 import EditHotel from "./pages/editHotel/EditHotel";
 import SingleRoom from "./pages/singleRoom/SingleRoom";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 
 function App() {
@@ -34,25 +35,28 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route path="login" element={<Login />} /> <Route index element={ <ProtectedRoute> <Home /> </ProtectedRoute>} />
+            <Route path="login" element={<Login />} /> <Route index element={<ProtectedRoute> <Home /> </ProtectedRoute>} />
             <Route path="users">
-              <Route index element={ <ProtectedRoute> <List columns={userColumns} /> </ProtectedRoute>} />
-              <Route path=":userId" element={ <ProtectedRoute> <Single /> </ProtectedRoute>} />
+              <Route index element={<ProtectedRoute> <List columns={userColumns} /> </ProtectedRoute>} />
+              <Route path=":userId" element={<ProtectedRoute> <Single /> </ProtectedRoute>} />
               <Route path="new" element={<ProtectedRoute><New inputs={userInputs} title="Add New User" /></ProtectedRoute>} />
               <Route path="edit/:userId" element={<ProtectedRoute> <EditUser /></ProtectedRoute>} />
             </Route>
             <Route path="hotels">
               <Route index element={<ProtectedRoute><List columns={hotelColumns} /></ProtectedRoute>} />
-              <Route path=":hotelId" element={ <ProtectedRoute> <SingleHotel /> </ProtectedRoute>} />
+              <Route path=":hotelId" element={<ProtectedRoute> <SingleHotel /> </ProtectedRoute>} />
               <Route path="new" element={<ProtectedRoute><NewHotel /></ProtectedRoute>} />
               <Route path="edit/:hotelId" element={<ProtectedRoute> <EditHotel /></ProtectedRoute>} />
             </Route>
 
             <Route path="rooms">
               <Route index element={<ProtectedRoute><List columns={roomColumns} /></ProtectedRoute>} />
-              <Route path=":roomId" element={ <ProtectedRoute> <SingleRoom /> </ProtectedRoute>} />
+              <Route path=":roomId" element={<ProtectedRoute> <SingleRoom /> </ProtectedRoute>} />
               <Route path="new" element={<ProtectedRoute><NewRoom /></ProtectedRoute>} />
             </Route>
+
+            <Route path="dashboard" element={<Dashboard />} /> <Route index element={<ProtectedRoute> <Home /> </ProtectedRoute>} />
+            
           </Route>
         </Routes>
       </BrowserRouter>
