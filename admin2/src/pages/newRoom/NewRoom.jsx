@@ -13,7 +13,7 @@ const NewRoom = () => {
 
 
   const {data, loading, error} = useFetch("/hotels")
-  console.log(data) 
+  console.log(data)
 
 
   const handleChange= (e) =>{
