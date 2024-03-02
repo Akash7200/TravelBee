@@ -9,7 +9,12 @@ const Dashboard = () => {
         <div className="dashboard-container">
             <h1>Admin Dashboard</h1>
             <div className="user-info">
-                <img src={user.user.img} alt="Admin" className="admin-image" />
+                {/* <img src={user.user.img} alt="Admin" className="admin-image" /> */}
+                <img
+                src={user.user.img || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"}
+                alt="Admin"
+                className="admin-image"
+                />
                 <p><strong>Admin Name:</strong> {user.user.username}</p>
                 <p><strong>Phone:</strong> {user.user.phone}</p>
                 <p><strong>Email:</strong> {user.user.email}</p>

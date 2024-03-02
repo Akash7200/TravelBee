@@ -1,38 +1,56 @@
-/* userprofile.css */
-
 .profile {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #828282;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.profile h2 {
-    font-size: 24px;
+h2 {
+    
+    text-align: center;
     margin-bottom: 20px;
-    color: maroon;
-}
-
-.profileDetails {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 5px;
-    color: maroon;
-}
-
-.profileItem {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
     
 }
 
-.profileImage {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
+.profile-details {
+    display: flex;
+    align-items: center;
 }
 
-.profile p {
+.profile-item {
+    margin-right: 20px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.profile-info {
+    flex-grow: 1;
+}
+
+.profile-info p {
+    margin: 5px 0;
+}
+
+.order-list {
+    list-style: none;
+    padding: 0;
+}
+
+.order-info {
+    background-color: #fff;
+    padding: 10px;
     margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.order-info p {
+    margin: 5px 0;
+    font-weight: bold;
 }

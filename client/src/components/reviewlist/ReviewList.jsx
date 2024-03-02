@@ -47,7 +47,7 @@ const ReviewList = () => {
           <h3>Name: {review.username}</h3>
           <p> Review: {review.review}</p>
           <div className="starRating">{renderStarRating(review.rating)}</div>
-          <p> Time: {review.createdAt}</p>
+          <p> Time: {new Date(review.createdAt).toLocaleString()}</p>
         </div>
       ))}
     </div>
