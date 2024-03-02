@@ -94,3 +94,18 @@ export const getTotalRevenue = async (req, res, next) => {
     }
 };
 
+
+//get revenue by hotel
+export const getRevenueByHotel = async (req, res, next) => {
+    try {
+        const orders = await Order.find({ hotelId: req.params.hotelId });
+        let total =  0;
+        orders.map(order=>{
+            total += order.cost
+        })
+        res.status(200).json(total);
+    }
+    catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};

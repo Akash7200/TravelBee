@@ -1,6 +1,6 @@
 import express from "express"
 import Review from "../models/Review.js";
-import { createOrder, deleteOrder, getHotelOrder, getOrder, getOrders, getTotalRevenue, getUserOrder } from "../controllers/order.js";
+import { createOrder, deleteOrder, getHotelOrder, getOrder, getOrders, getRevenueByHotel, getTotalRevenue, getUserOrder } from "../controllers/order.js";
 
 const router = express.Router();
 
@@ -23,5 +23,6 @@ router.get("/getUserOrder/:userId", getUserOrder);
 //get orders total revenue
 
 router.get("/get/total/revenue", getTotalRevenue)
+router.get("/get/revenueby/hotel/:hotelId", getRevenueByHotel)
 
 export default router;
