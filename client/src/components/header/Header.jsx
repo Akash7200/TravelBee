@@ -53,6 +53,7 @@ const Header = ({ type }) => {
   const {dispatch} = useContext(SearchContext);
 
   const handleSearch = () => {
+    console.log("Dates object:", dates);
     dispatch({type:"NEW_SEARCH", payload:{destination, dates, options}})
     navigate("/hotels", { state: { destination, dates, options } });
   };

@@ -20,6 +20,7 @@ const List = () => {
   const { data, loading, error, reFetch } = useFetch(`http://localhost:8000/api/hotels?city=${destination}&min=${min || 0}&max=${max || 1000}`);
   const { data: hotelData, loading: hotelLoading, error: hotelError } = useFetch("http://localhost:8000/api/hotels");
   console.log(hotelData)
+  console.log("Dates object:", dates);
   const handleClick = () => {
     reFetch();
   }

@@ -10,7 +10,7 @@ import {
   faCircleXmark,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { SearchContext } from "../../context/SearchContext";
@@ -32,8 +32,41 @@ const Hotel = () => {
   const navigate = useNavigate()
 
   console.log(id)
+  
 
   const { dates, options } = useContext(SearchContext);
+  //const { options } = useContext(SearchContext);
+
+
+
+  //.................
+
+  // const days =
+  //   dates && dates[0] && dates[0].endDate && dates[0].startDate
+  //     ? dayDifferece(dates[0].endDate, dates[0].startDate)
+  //     : 0;
+
+  useEffect(() => {
+    // Save dates to local storage when dates change
+    localStorage.setItem("dates", JSON.stringify(dates));
+  }, [dates]);
+
+  useEffect(() => {
+    // Retrieve dates from local storage when component mounts
+    const storedDates = localStorage.getItem("dates");
+    if (storedDates) {
+      const parsedDates = JSON.parse(storedDates);
+      // Update context with retrieved dates
+      // This assumes that you have a function to update dates in the SearchContext
+      // Replace setDates with the actual function to update dates in your context
+      // setDates(parsedDates);
+    }
+  }, []);
+
+  console.log("Dates object:", dates);
+
+
+  //.................
 
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -43,7 +76,12 @@ const Hotel = () => {
     return diffDays;
   }
 
-  const days = dayDifferece(dates[0].endDate, dates[0].startDate)
+  const days =
+    dates && dates[0] && dates[0].endDate && dates[0].startDate
+      ? dayDifferece(dates[0].endDate, dates[0].startDate)
+      : 0;
+
+  //const days = dayDifferece(dates[0].endDate, dates[0].startDate)
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -54,9 +92,9 @@ const Hotel = () => {
     let newSlideNumber;
 
     if (direction === "l") {
-      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
+      newSlideNumber = slideNumber === 0 ? 4 : slideNumber - 1;
     } else {
-      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
+      newSlideNumber = slideNumber === 4 ? 0 : slideNumber + 1;
     }
 
     setSlideNumber(newSlideNumber)
@@ -105,11 +143,22 @@ const Hotel = () => {
           <div className="hotelWrapper">
             <button className="bookNow">Reserve or Book Now!</button>
             <h1 className="hotelTitle">{data.name}</h1>
-            <div classname = "tagscontainer">
-            {data.tags}
+
+            
+            <div className="tagContainer">
+              {/* <button className="tags">{data.tags}</button> */}
+
+              {/* {data.tags.map((tag, index) => (
+                      <span key={index} className="tags">{tag}</span>
+                      
+                    ))} */}
+
             </div>
             
+            
+            
             <div className="hotelAddress">
+            
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{data.address}</span>
             </div>

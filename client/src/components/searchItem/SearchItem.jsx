@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./searchItem.css";
 
-const SearchItem = ({item}) => {
+const SearchItem = ({ item }) => {
   return (
     <div className="searchItem">
       <img
@@ -33,9 +33,9 @@ const SearchItem = ({item}) => {
           <span className="siPrice">{item.cheapestPrice}$</span>
           <span className="siTaxOp">Includes taxes and fees</span>
           <Link to={`/hotels/${item._id}`}>
-          <button className="siCheckButton">See availability</button>
+            <button className="siCheckButton">See availability</button>
           </Link>
-          
+
         </div>
       </div>
     </div>

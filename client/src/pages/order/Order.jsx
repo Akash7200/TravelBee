@@ -5,6 +5,8 @@ import "./order.css";
 import useFetch from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { SearchContext } from "../../context/SearchContext";
 
 const Order = () => {
     const [userData, setUserData] = useState(null);
@@ -15,9 +17,12 @@ const Order = () => {
     const location = useLocation();
     const [roomData, setRoomData] = useState([]);
     //const { data, loading, error } = useFetch(`http://localhost:8000/api/hotels/find/${hotelId}`)
-    //const { data2 } = useFetch(`http://localhost:8000/api/hotels/room/${roomId}`)
+    const { data2 } = useFetch(`http://localhost:8000/api/rooms/${roomId}`)
     const { data: hotelData, loading: hotelLoading, error: hotelError } = useFetch(`http://localhost:8000/api/hotels/find/${hotelId}`);
-    const { data: getData, loading: getLoading, error: getError } = useFetch(`http://localhost:8000/api/rooms/${roomId}/`);
+    //const { data: getData, loading: getLoading, error: getError } = useFetch(`http://localhost:8000/api/rooms/${roomId}/`);
+
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -37,19 +42,56 @@ const Order = () => {
             setRoomId(roomId);
             setSuiteId(suiteId);
            if (roomId && roomId.length > 0) {
-            fetchRoomData(roomId);
+            fetchRoomData(selectedRooms);
         }
         }
     }, [location.state]);
 
 
+// ..............
+    const { dates, options } = useContext(SearchContext);
+    const data = hotelData;
+
+    const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+    function dayDifferece(date1, date2) {
+      const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+      const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+      return diffDays;
+    }
+
+    const days =
+    dates && dates[0] && dates[0].endDate && dates[0].startDate
+      ? dayDifferece(dates[0].endDate, dates[0].startDate)
+      : 0;
+    const cost = days * data.cheapestPrice * options.room
+
+    const checkIn = dates[0].startDate;
+    const checkOut= dates[0].endDate;
 
 
 
 
-    const handleConfirmation = () => {
+    const handleConfirmation = async(e) => {
+        e.preventDefault();
+        const username = user.username;
+        const userId = user._id;
+        const hotelName = hotelData.name;
+        const address = hotelData.address;
+        const city = hotelData.city;
+        //const cost = hotelData.cost;
+
+
+        console.log(username)
         // Implement your confirmation logic here
-        navigate("/order/transaction")
+        try {
+            await axios.post(`http://localhost:8000/api/orders` , {userId, username, hotelName, address, city, cost, checkIn,checkOut});
+            // Handle successful registration, maybe redirect user to login page
+            navigate("/order/transaction")
+            
+        } catch (err) {
+            setError(err.response.data.message);
+            setLoading(false);
+        }     
        
     };
 
@@ -73,6 +115,8 @@ const Order = () => {
             console.error('Error fetching room data:', error);
         }
     };
+
+    ///........
 
 
     const fetchRoomById = async (roomId) => {
@@ -111,7 +155,7 @@ const Order = () => {
                     <h2>Selected Rooms:</h2>
                     {selectedRooms.length > 0 ? (
                         selectedRooms.map((room, index) => (
-                            <p key={index}>Room ID: {selectedRooms[0]}</p>
+                           <p key={index}>Room ID: {room}</p>
                         ))
                     ) : (
                         <p>No rooms selected</p>

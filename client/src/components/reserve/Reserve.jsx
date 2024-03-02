@@ -46,12 +46,45 @@ const Reserve = ({ setOpen, hotelId, userData, hotelData }) => {
 
     }
 
+
+
+    // const handleSelect = (e) => {
+    //     const checked = e.target.checked;
+    //     const value = e.target.value;
+    //     setSelectedRooms(checked ? [...selectedRooms, value] : selectedRooms.filter(item => item !== value));
+    //     console.log(value);
+        
+
+    // }
+
+
     const handleSelect = (e) => {
         const checked = e.target.checked;
         const value = e.target.value;
-        setSelectedRooms(checked ? [...selectedRooms, value] : selectedRooms.filter(item => item !== value));
-
+    
+        // If checked is true, add the value to selectedRooms if it's not already there
+        // If checked is false, remove the value from selectedRooms
+        setSelectedRooms(prevSelectedRooms => {
+            if (checked) {
+                // Add value to selectedRooms if it's not already there
+                if (!prevSelectedRooms.includes(value)) {
+                    return [...prevSelectedRooms, value];
+                }
+            } else {
+                // Remove value from selectedRooms
+                return prevSelectedRooms.filter(item => item !== value);
+            }
+            return prevSelectedRooms; // If value already exists (or unchecked), return the previous state
+        });
+    
+        
     }
+    console.log(selectedRooms);
+    
+
+    
+
+
 
     const navigate = useNavigate();
 
@@ -70,6 +103,7 @@ const Reserve = ({ setOpen, hotelId, userData, hotelData }) => {
                 return res.data;
             }))
             setOpen(false)
+
             navigate("/order", {
                 state: {
                     userData: userData,
@@ -77,6 +111,7 @@ const Reserve = ({ setOpen, hotelId, userData, hotelData }) => {
                     hotelId: hotelId,
                     roomId: selectedRooms,
                     suiteId: roomId
+
                 }
             });
 
