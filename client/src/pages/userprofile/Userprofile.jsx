@@ -34,35 +34,45 @@ const Userprofile = () => {
     return (
         <div className="profile">
             <h2>User Profile</h2>
-            <div className="profileDetails">
-                <div className="profileItem">
+            <div className="profile-details">
+                <div className="profile-item">
                     <img
                         src={user.img || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"}
                         alt="User Avatar"
-                        className="profileImage"
+                        className="profile-image"
                     />
                 </div>
-                <p><b>Name:</b> {user.username}</p>
-                <p><b>Email:</b> {user.email}</p>
-                <p><b>Phone:</b> {user.phone}</p>
-                <p><b>City:</b> {user.city}</p>
-                <p><b>Country:</b> {user.country}</p>
-                {/* Display user orders */}
-                <h3>User Bookings:</h3>
-                
-                {loading ? (
-                    <p>Loading...</p>
-                ) : error ? (
-                    <p>Error: {error}</p>
-                ) : (
-                    <ul>
-                        {userOrders.map(order => (
-                            <li key={order.id}> Name: {order.hotelName}, Address: {order.address}, City: {order.city} Cost: {order.cost}, Check-in: {new Date(order.checkIn).toLocaleString()}, Check-out: {new Date(order.checkOut).toLocaleString()} </li>
-                            
-                        ))}
-                    </ul>
-                )}
+                <div className="profile-info">
+                    <p><strong>Name:</strong> {user.username}</p>
+                    <p><strong>Email:</strong> {user.email}</p>
+                    <p><strong>Phone:</strong> {user.phone}</p>
+                    <p><strong>City:</strong> {user.city}</p>
+                    <p><strong>Country:</strong> {user.country}</p>
+                </div>
             </div>
+            {/* Display user orders */}
+            <h3>User Bookings:</h3>
+            
+            {loading ? (
+                <p>Loading...</p>
+            ) : error ? (
+                <p>Error: {error}</p>
+            ) : (
+                <ul className="order-list">
+                    {userOrders.map(order => (
+                        <li key={order.id}>
+                            <div className="order-info">
+                                <p><strong>Hotel Name:</strong> {order.hotelName}</p>
+                                <p><strong>Address:</strong> {order.address}</p>
+                                <p><strong>City:</strong> {order.city}</p>
+                                <p><strong>Cost:</strong> {order.cost}</p>
+                                <p><strong>Check-in:</strong> {new Date(order.checkIn).toLocaleString()}</p>
+                                <p><strong>Check-out:</strong> {new Date(order.checkOut).toLocaleString()}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 }

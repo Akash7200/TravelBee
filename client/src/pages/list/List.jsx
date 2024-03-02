@@ -1,12 +1,13 @@
 import "./list.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
+import { SearchContext } from "../../context/SearchContext";
 
 const List = () => {
   const location = useLocation();
@@ -16,13 +17,41 @@ const List = () => {
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
+  const navigate = useNavigate();
+  const {dispatch} = useContext(SearchContext);
 
   const { data, loading, error, reFetch } = useFetch(`http://localhost:8000/api/hotels?city=${destination}&min=${min || 0}&max=${max || 1000}`);
   const { data: hotelData, loading: hotelLoading, error: hotelError } = useFetch("http://localhost:8000/api/hotels");
   console.log(hotelData)
   console.log("Dates object:", dates);
+
+
+  //..............
+
+
+  const [dest, setDest] = useState("");
+ 
+  const [dt, setDt] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
+  
+  const [opt, setOpt] = useState({
+    adult: 1,
+    children: 0,
+    room: 1,
+  });
+
+
+
   const handleClick = () => {
     reFetch();
+    dispatch({type:"NEW_SEARCH", payload:{dest:destination, dt:dates, opt:options}})
+    navigate("/hotels", { state: { destination, dates, options } });
+    
   }
 
   return (
