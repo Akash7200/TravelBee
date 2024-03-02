@@ -13,18 +13,8 @@
   gap: 10px;
   position: relative;
 }
-.tagsContainer {
-  display: flex;
-  flex-wrap: wrap;
-}
 
-.tag {
-  background-color: #e0e0e0;
-  padding: 3px 8px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  border-radius: 4px;
-}
+
 
 .bookNow {
   position: absolute;
@@ -162,3 +152,20 @@
   color: lightgray;
   cursor: pointer;
 }
+
+.tagcontainer{
+  display: flex;
+  background-color: maroon;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tags{
+  background-color: brown;
+  color: white;
+  padding: 5px 10px;
+}
+
+
+
+

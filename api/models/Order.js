@@ -7,35 +7,39 @@ const orderSchema = new mongoose.Schema({
     },
     userId: {
         type: String,
-        required: true
+        required: false
     },
     phone: {
         type: String,
-        required: true
+        required: false
     },
     hotelId: {
         type: String,
-        required: true
+        required: false
     },
     hotelName: {
         type: String,
-        required: true
+        required: false
     },
     address: {
         type: String,
-        required: true
+        required: false
+    },
+    city: {
+        type: String,
+        required: false
     },
     cost: {
         type: Number,
-        required: true
+        required: false
     },
     checkIn: {
         type: String,
-        required: true
+        required: false
     },
     checkOut: {
         type: String,
-        required: true
+        required: false
     },
     rooms: {
         type: [String]
