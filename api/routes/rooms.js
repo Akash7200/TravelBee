@@ -1,11 +1,11 @@
 import express from "express"
-import { createRoom, deleteRoom, getOneRoom, getRoom, getRooms, updateRoom, updateRoomAvailability } from "../controllers/room.js";
+import { createRoom, deleteRoom, getHotel, getOneRoom, getRoom, getRooms, updateRoom, updateRoomAvailability } from "../controllers/room.js";
 import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
 //create
-router.post("/:hotelId",verifyAdmin, createRoom);
+router.post("/:hotelId", createRoom);
 
 
 //update
@@ -13,7 +13,7 @@ router.put("/:id",verifyAdmin, updateRoom);
 router.put("/availability/:id", updateRoomAvailability);
 
 //delete
-router.delete("/:id/:hotelId",verifyAdmin, deleteRoom);
+router.delete("/:id", deleteRoom);
 
 //get
 router.get("/:id", getRoom);
@@ -22,6 +22,8 @@ router.get("/:id", getRoom);
 router.get("/", getRooms);
 
 router.get("/:suiteId/:roomId", getOneRoom);
+
+router.get("/find/getHotelByRoom/:roomId", getHotel)
 
 
 

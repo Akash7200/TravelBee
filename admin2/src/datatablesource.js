@@ -80,9 +80,15 @@ export const roomColumns = [
   { field: "_id", headerName: "ID", width: 70 },
   
   {
-    field: "Title",
+    field: "title",
     headerName: "Title",
-    width: 230,
+    width: 150,
+  },
+
+  {
+    field: "hotel",
+    headerName: "Hotel",
+    width: 100
   },
 
   {

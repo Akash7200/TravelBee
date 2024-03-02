@@ -15,12 +15,7 @@ const SingleHotel = () => {
   const { data, loading, error } = useFetch(`/${path}`);
 
 
-  const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
 
-  const [slideNumber, setSlideNumber] = useState(0);
-  const [open, setOpen] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
 
   const selectedData = data.find(item => item._id === id.toString());
 
