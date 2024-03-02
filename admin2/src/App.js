@@ -17,6 +17,7 @@ import EditUser from "./pages/editUser/EditUser";
 import EditHotel from "./pages/editHotel/EditHotel";
 import SingleRoom from "./pages/singleRoom/SingleRoom";
 import Dashboard from "./pages/dashboard/Dashboard";
+import EditRoom from "./pages/editRoom/EditRoom";
 
 
 function App() {
@@ -53,6 +54,8 @@ function App() {
               <Route index element={<ProtectedRoute><List columns={roomColumns} /></ProtectedRoute>} />
               <Route path=":roomId" element={<ProtectedRoute> <SingleRoom /> </ProtectedRoute>} />
               <Route path="new" element={<ProtectedRoute><NewRoom /></ProtectedRoute>} />
+              <Route path="edit/:roomId" element={<ProtectedRoute> <EditRoom /></ProtectedRoute>} />
+
             </Route>
 
             <Route path="dashboard" element={<Dashboard />} /> <Route index element={<ProtectedRoute> <Home /> </ProtectedRoute>} />

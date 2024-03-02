@@ -17,16 +17,16 @@ const router = express.Router();
 // })
 
 //update
-router.put("/:id",verifyUser, updateUser);
+router.put("/:id", updateUser);
 
 //delete
-router.delete("/:id",verifyUser, deleteUser);
+router.delete("/:id", deleteUser);
 
 //get
-router.get("/:id",verifyUser, getUser);
+router.get("/:id", getUser);
 
 //getall
-router.get("/",verifyAdmin, getUsers);
+router.get("/", getUsers);
 
 router.get("/get/userCount", getUserCount)
 

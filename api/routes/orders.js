@@ -23,6 +23,6 @@ router.get("/getUserOrder/:userId", getUserOrder);
 //get orders total revenue
 
 router.get("/get/total/revenue", getTotalRevenue)
-router.get("/get/revenueby/hotel/:hotelId", getRevenueByHotel)
+router.get("/get/revenueby/hotel/:hotelName", getRevenueByHotel)
 
 export default router;

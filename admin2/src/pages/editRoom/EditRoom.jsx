@@ -1,4 +1,4 @@
-import "./editHotel.scss";
+import "./editRoom.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
@@ -13,7 +13,7 @@ const EditHotel = ({ inputs, title }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const id = location.pathname.split("/")[3];
-  const { data, loading, error } = useFetch(`/${path}/find/${id}`);
+  const { data, loading, error } = useFetch(`/${path}/${id}`);
   console.log(path, id, data);
 
   const [file, setFile] = useState("");
@@ -37,15 +37,15 @@ const EditHotel = ({ inputs, title }) => {
 
       // const { url } = uploadRes.data
 
-      const newHotel = {
+      const newRoom = {
         ...info,
         // img: url,
         // isAdmin: true
       }
 
-      console.log(newHotel)
-      console.log("http://localhost:8000/api/hotels/" + id)
-      await axios.put(`http://localhost:8000/api/hotels/${id}`, newHotel)
+      console.log(newRoom)
+      console.log("http://localhost:8000/api/rooms/" + id)
+      await axios.put(`http://localhost:8000/api/rooms/${id}`, newRoom)
 
     } catch (err) {
       console.log(err)
@@ -59,7 +59,7 @@ const EditHotel = ({ inputs, title }) => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Edit hotel</h1>
+          <h1>Edit Room</h1>
         </div>
         <div className="bottom">
           {/* <div className="left">
@@ -82,30 +82,30 @@ const EditHotel = ({ inputs, title }) => {
                 />
               </div> */}
 
-              <div className="formInput" key="name">
-                <label>Hotel Name</label>
-                <input onChange={handleChange} type="text" placeholder={data.name} id="name" />
+              <div className="formInput" key="title">
+                <label>Room Title</label>
+                <input onChange={handleChange} type="text" placeholder={data.title} id="title" />
               </div>
 
-              <div className="formInput" key="city">
-                <label>City</label>
-                <input onChange={handleChange} type="city" placeholder={data.city} id="city" />
+               <div className="formInput" key="price">
+                <label>Price</label>
+                <input onChange={handleChange} type="price" placeholder={data.price} id="price" />
               </div> 
 
-               <div className="formInput" key="address">
-                <label>Address</label>
-                <input onChange={handleChange} type="text" placeholder={data.address} id="address" />
+               <div className="formInput" key="maxPeople">
+                <label>Max People</label>
+                <input onChange={handleChange} type="text" placeholder={data.maxPeople} id="maxPeople" />
               </div>
 
-               <div className="formInput" key="distance">
-                <label>Distance</label>
-                <input onChange={handleChange} type="text" placeholder={data.distance} id="distance" />
+               <div className="formInput" key="desc">
+                <label>Description</label>
+                <input onChange={handleChange} type="text" placeholder={data.desc} id="desc" />
               </div>
 
-             <div className="formInput" key="description">
+             {/* <div className="formInput" key="description">
                 <label>Description</label>
                 <input onChange={handleChange} type="text" placeholder={data.description} id="description" />
-              </div>
+              </div> */}
 
 
               <button onClick={handleClick}>Send</button>

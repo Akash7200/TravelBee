@@ -5,6 +5,10 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import HotelOutlinedIcon from '@mui/icons-material/HotelOutlined';
+import HouseIcon from '@mui/icons-material/House';
+
+
+
 import useFetch from "../../hooks/useFetch";
 
 import { Link } from "react-router-dom";
@@ -52,12 +56,10 @@ const Widget = ({ type }) => {
         </Link>,
         icon: (
           <Link to="/hotels" style={{ textDecoration: "none" }}>
-          <HotelOutlinedIcon
+          <HouseIcon
             className="icon"
-            style={{
-              backgroundColor: "rgba(218, 165, 32, 0.2)",
-              color: "goldenrod",
-            }}
+            style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
+
           />
           </Link>
         ),
@@ -73,9 +75,12 @@ const Widget = ({ type }) => {
         </Link>,
         icon: (
           <Link to="/rooms" style={{ textDecoration: "none" }}>
-          <MonetizationOnOutlinedIcon
+          <HotelOutlinedIcon
             className="icon"
-            style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
+            style={{
+              backgroundColor: "rgba(218, 165, 32, 0.2)",
+              color: "goldenrod",
+            }}
           /></Link>
         ),
       };

@@ -38,7 +38,7 @@ const SingleHotel = () => {
         <Navbar />
         <div className="top">
           <div className="left">
-            <Link to={`/hotels/edit/${id}`}> <div className="editButton">Edit</div> </Link>
+            <Link to={`/rooms/edit/${id}`}> <div className="editButton">Edit</div> </Link>
             <h1 className="title">Information</h1>
             <div className="item">
 
