@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./singleHotel.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
@@ -12,13 +11,10 @@ const SingleHotel = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const id = location.pathname.split("/")[2];
+
   const { data, loading, error } = useFetch(`/${path}`);
 
-
-
-
   const selectedData = data.find(item => item._id === id.toString());
-
 
   const name = selectedData?.name || '';
   const type = selectedData?.type || '';
@@ -33,12 +29,14 @@ const SingleHotel = () => {
   const rooms = selectedData?.rooms || [];
   const tags = selectedData?.tags || [];
 
-  console.log(selectedData);
-  console.log(rooms)
+  const { data: roomsData, loading: roomsLoading, error: roomsError } = useFetch(`http://localhost:8000/api/rooms`);
+  console.log(roomsData);
 
 
-
-
+  const roomHandler = (roomId) => {
+    const room = roomsData.find(room => room._id === roomId);
+    return room ? room.title : '';
+  };
 
   return (
     <div className="single">
@@ -81,18 +79,20 @@ const SingleHotel = () => {
                   <div className="tagsContainer">
                     {tags.map((tag, index) => (
                       <span key={index} className="tag">{tag}</span>
-                      
+                    ))}
+                  </div>
+                  <span className="itemKey">Rooms:</span>
+                  <div className="tagsContainer">
+                    {rooms.map((room, index) => (
+                      <span key={index} className="tag">{roomHandler(room)}</span>
                     ))}
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>
         </div>
-        <div className="roomsList">
-
-        </div>
+        <div className="roomsList"></div>
       </div>
     </div>
   );

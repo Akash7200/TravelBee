@@ -4,6 +4,9 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import HotelOutlinedIcon from '@mui/icons-material/HotelOutlined';
+
+import { Link } from "react-router-dom";
 
 const Widget = ({ type }) => {
   let data;
@@ -17,44 +20,55 @@ const Widget = ({ type }) => {
       data = {
         title: "USERS",
         isMoney: false,
-        link: "See all users",
+        link: <Link to="/users" style={{ textDecoration: "none" }}>
+          See all users  
+       </Link>,
         icon: (
-          <PersonOutlinedIcon
-            className="icon"
-            style={{
-              color: "crimson",
-              backgroundColor: "rgba(255, 0, 0, 0.2)",
-            }}
-          />
+          <Link to="/users" style={{ textDecoration: "none" }}>
+            <PersonOutlinedIcon
+              className="icon"
+              style={{
+                color: "crimson",
+                backgroundColor: "rgba(255, 0, 0, 0.2)",
+              }}
+            />
+          </Link>
         ),
       };
       break;
     case "order":
       data = {
-        title: "ORDERS",
+        title: "HOTELS",
         isMoney: false,
-        link: "View all orders",
+        link:           <Link to="/hotels" style={{ textDecoration: "none" }}>
+        View all hotels
+        </Link>,
         icon: (
-          <ShoppingCartOutlinedIcon
+          <Link to="/hotels" style={{ textDecoration: "none" }}>
+          <HotelOutlinedIcon
             className="icon"
             style={{
               backgroundColor: "rgba(218, 165, 32, 0.2)",
               color: "goldenrod",
             }}
           />
+          </Link>
         ),
       };
       break;
     case "earning":
       data = {
-        title: "EARNINGS",
-        isMoney: true,
-        link: "View net earnings",
+        title: "ROOMS",
+        isMoney: false,
+        link:<Link to="/rooms" style={{ textDecoration: "none" }}>
+        View all rooms
+        </Link>,
         icon: (
+          <Link to="/rooms" style={{ textDecoration: "none" }}>
           <MonetizationOnOutlinedIcon
             className="icon"
             style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
-          />
+          /></Link>
         ),
       };
       break;
