@@ -101,3 +101,26 @@ export const getHotelRooms = async (req, res, next) =>{
         next(err)
     }
 }
+
+//get hotel count
+export const getHotelCount = async (req, res, next)=>{
+    try{
+        const hotelCount = await Hotel.countDocuments()
+        res.status(200).json(hotelCount)
+    }catch(err){
+        next(err)
+    }
+}
+
+//get hotel total revenue
+export const getTotalRevenue = async (req, res, next)=>{
+    try{
+        const hotels = await Hotel.find();
+        const totalRevenue = hotels.reduce((prev, curr)=>{
+            return prev + curr.cheapestPrice;
+        }, 0)
+        res.status(200).json(totalRevenue)
+    }catch(err){
+        next(err)
+    }
+}

@@ -4,8 +4,14 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
+import useFetch from "../../hooks/useFetch";
 
 const Featured = () => {
+  
+  const {data} = useFetch("/orders/get/total/revenue");
+  console.log(data)
+
+
   return (
     <div className="featured">
       <div className="top">
@@ -13,12 +19,15 @@ const Featured = () => {
         <MoreVertIcon fontSize="small" />
       </div>
       <div className="bottom">
+        <p>Profit rate</p>
         <div className="featuredChart">
-          <CircularProgressbar value={70} text={"70%"} strokeWidth={5} />
+          <CircularProgressbar value={15} text={"15%"} strokeWidth={5} />
         </div>
-        <p className="title">Total sales made today</p>
-        <p className="amount">$420</p>
-        <p className="desc">
+        <p className="title">Total sales made till now</p>
+        <p className="amount">${data}</p>
+        <p className="title">Total revenue till now</p>
+        <p className="amount">${data*0.15}</p>
+        {/* <p className="desc">
           Previous transactions processing. Last payments may not be included.
         </p>
         <div className="summary">
@@ -43,7 +52,7 @@ const Featured = () => {
               <div className="resultAmount">$12.4k</div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

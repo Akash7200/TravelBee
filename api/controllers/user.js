@@ -36,3 +36,13 @@ export const getUsers = async (req, res, next)=>{
         next(err)
     }
 }
+
+//get user count
+export const getUserCount = async (req, res, next)=>{
+    try{
+        const userCount = await User.countDocuments()
+        res.status(200).json(userCount)
+    }catch(err){
+        next(err)
+    }
+}

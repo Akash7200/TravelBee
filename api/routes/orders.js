@@ -1,6 +1,6 @@
 import express from "express"
 import Review from "../models/Review.js";
-import { createOrder, deleteOrder, getHotelOrder, getOrder, getOrders, getUserOrder } from "../controllers/order.js";
+import { createOrder, deleteOrder, getHotelOrder, getOrder, getOrders, getTotalRevenue, getUserOrder } from "../controllers/order.js";
 
 const router = express.Router();
 
@@ -19,5 +19,9 @@ router.get("/", getOrders);
 
 router.get("/getHotelOrder/:hotelId", getHotelOrder);
 router.get("/getUserOrder/:userId", getUserOrder);
+
+//get orders total revenue
+
+router.get("/get/total/revenue", getTotalRevenue)
 
 export default router;

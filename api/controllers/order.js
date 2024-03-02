@@ -78,3 +78,19 @@ export const getUserOrder = async (req, res, next) => {
     }
 };
 
+//get order total revenue
+
+export const getTotalRevenue = async (req, res, next) => {
+    try {
+        const orders = await Order.find();
+        let total =  0;
+        orders.map(order=>{
+            total += order.cost
+        })
+        res.status(200).json(total);
+    }
+    catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
