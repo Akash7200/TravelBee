@@ -81,13 +81,13 @@ const New = ({ inputs, title }) => {
                   <input onChange={handleChange} type={input.type} placeholder={input.placeholder} id={input.id}/>
                 </div>
               ))}
-              <div className="formInput">
+              {/* <div className="formInput">
                 <label>Admin</label>
                 <select onChange={handleChange} id="isAdmin">
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
-              </div>
+              </div> */}
               <button onClick={handleClick}>Send</button>
             </form>
           </div>
