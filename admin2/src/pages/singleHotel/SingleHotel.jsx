@@ -59,20 +59,20 @@ const SingleHotel = () => {
               <div className="details">
                 <h1 className="itemTitle">{name}</h1>
                 <div className="detailItem">
-                  <span className="itemKey">Email:</span>
+                  <span className="itemKey">Title:</span>
                   <span className="itemValue">{title}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Phone:</span>
+                  <span className="itemKey">Catagory:</span>
                   <span className="itemValue">{type}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Address:</span>
-                  <span className="itemValue">{city}</span>
+                  <span className="itemKey">City:</span>
+                  <span className="itemValue">{address}, {city}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Country:</span>
-                  <span className="itemValue">{distance}</span>
+                  <span className="itemKey">Distance from center:</span>
+                  <span className="itemValue"> {distance}</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Tags:</span>
