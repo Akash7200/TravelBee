@@ -54,6 +54,10 @@ app.use((err, req, res, next) => {
     })
 })
 
+app.use((req, res, next) => {
+    req.headers.host = 'https://travelbee-j1uq.onrender.com';
+    next();
+});
 
 app.listen(8000, () => {
     connect()
