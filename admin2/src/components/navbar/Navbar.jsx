@@ -58,6 +58,9 @@ const Navbar = () => {
               src={user.img || "https://i.imgur.com/6VBx3io.png"}
               alt=""
               className="avatar"
+              onClick={() => {
+                window.location.href = "/dashboard";
+              }}
             />
           </div>
         </div>

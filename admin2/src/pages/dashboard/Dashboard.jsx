@@ -1,3 +1,5 @@
+import Sidebar from "../../components/sidebar/Sidebar";
+import Navbar from "../../components/navbar/Navbar";
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import './dashboard.scss'; // Import the CSS file for styling
@@ -6,6 +8,10 @@ const Dashboard = () => {
     const user = useContext(AuthContext);
 
     return (
+        <div className="home">
+        <Sidebar />
+        <div className="homeContainer">
+          <Navbar />
         <div className="dashboard-container">
             <h1>Admin Dashboard</h1>
             <div className="user-info">
@@ -23,6 +29,8 @@ const Dashboard = () => {
                 <p><strong>Created At:</strong> {new Date(user.user.createdAt).toLocaleString()}</p>
             </div>
             {/* Add your dashboard content here */}
+        </div>
+        </div>
         </div>
     );
 };

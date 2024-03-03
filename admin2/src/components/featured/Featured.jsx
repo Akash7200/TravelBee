@@ -9,7 +9,6 @@ import useFetch from "../../hooks/useFetch";
 const Featured = () => {
   
   const {data} = useFetch("/orders/get/total/revenue");
-  console.log(data)
 
 
   return (
