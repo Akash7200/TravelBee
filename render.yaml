@@ -1,0 +1,22 @@
+services:
+  - name: admin2
+    env: node
+    buildCommand: yarn
+    startCommand: yarn start
+    routes:
+      - path: /
+        port: 3000
+  - name: api
+    env: node
+    buildCommand: yarn
+    startCommand: yarn start
+    routes:
+      - path: /
+        port: 8000
+  - name: client
+    env: node
+    buildCommand: yarn
+    startCommand: yarn start
+    routes:
+      - path: /
+        port: 3001
